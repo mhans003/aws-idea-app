@@ -26,5 +26,40 @@ router.get('/users', (req, res) => {
     });
 });
 
+//Get all ideas for one user.
+router.get('/users/:username', (req, res) => {
+    console.log(`Querying for idea(s) from ${req.params.username}.`);
+
+    //Create params object to query Ideas table for one user's data.
+    const params = {
+        TableName: table,
+        KeyConditionExpression: "#un = :user",
+        //Define aliases.
+        ExpressionAttributeNames: {
+            "#un": "username",
+            "#ca": "createdAt",
+            "#ia": "idea"
+        },
+        ExpressionAttributeValues: {
+            ":user": req.params.username
+        },
+        //Determine which fields will be returned (ideas and createdAt).
+        ProjectionExpression: "#ia, #ca",
+        //Ensure descending order.
+        ScanIndexForward: false
+    };
+
+    //Perform query.
+    dynamodb.query(params, (err, data) => {
+        if (err) {
+            console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
+            res.status(500).json(err);
+        } else {
+            console.log("Query succeeded.");
+            res.json(data.Items)
+        }
+    });
+});
+
 module.exports = router;
 
