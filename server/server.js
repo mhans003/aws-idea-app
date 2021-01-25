@@ -4,7 +4,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 //Include routes.
-//
+const userRoutes = require('./routes/user-routes');
 
 //Handle parsing middleware.
 app.use(express.json());
@@ -15,8 +15,8 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
 }
 
-//API routes will go here
-//
+//Set up API routes.
+app.use('/api/', userRoutes);
 
 // Start the API server
 app.listen(PORT, () =>
