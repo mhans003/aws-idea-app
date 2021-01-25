@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //Serve static assets
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
+    app.use(express.static('client/build'));
 }
 
 //API routes will go here
@@ -20,6 +20,6 @@ if (process.env.NODE_ENV === 'production') {
 
 // Start the API server
 app.listen(PORT, () =>
-  console.log(`Server now listening on PORT ${PORT}!`)
+    console.log(`Server now listening on PORT ${PORT}!`)
 );
 
