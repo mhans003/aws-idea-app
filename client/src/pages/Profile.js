@@ -13,6 +13,7 @@ const awsConfig = {
 AWS.config.update(awsConfig);
 
 const Profile = props => {
+    //Acess the username from the URL parameter.
     const { username: userParam } = useParams();
     const [isLoaded, setIsLoaded] = useState(false);
     const [ideas, setIdeas] = useState([{
@@ -23,16 +24,18 @@ const Profile = props => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const res = await fetch(`/api/users/${userParam}`);
-            const data = await res.json();
-            //Sort the array by createdAt property ordered by descending values.
-            // const orderData = data.sort((a, b) => (a.createdAt < b.createdAt) ? 1 : -1);
-            console.log(data);
-            setIdeas(data);
-            setIsLoaded(true);
-        }
+            try {
+                const res = await fetch(`/api/users/${userParam}`);
+                const data = await res.json();
+                console.log(data);
+                setIdeas([...data]);
+                setIsLoaded(true);
+            } catch (error) {
+                console.log(error);
+            }
+        };
         fetchData();
-    }, []);
+    }, [userParam]);
 
     return (
         <div>

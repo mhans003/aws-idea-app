@@ -10,16 +10,16 @@ const Home = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-          try {
-            const res = await fetch('/api/users');
-            const jsonData = await res.json();
-            //Sort the array by createdAt property ordered by descending values.
-            const data = jsonData.sort((a, b) => (a.createdAt < b.createdAt) ? 1 : -1);
-            setIdeas([...data]);
-            setIsLoaded(true);
-          } catch (error) {
-            console.log(error);
-          }
+            try {
+                const res = await fetch('/api/users');
+                const jsonData = await res.json();
+                //Sort the array by createdAt property ordered by descending values.
+                const data = jsonData.sort((a, b) => (a.createdAt < b.createdAt) ? 1 : -1);
+                setIdeas([...data]);
+                setIsLoaded(true);
+            } catch (error) {
+                console.log(error);
+            }
         }
         fetchData();
     }, []);
