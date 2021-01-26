@@ -23,7 +23,7 @@ const Home = () => {
             }
         }
         fetchData();
-    }, []);
+    }, [ideas]);
 
     return (
         <main>
