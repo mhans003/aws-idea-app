@@ -43,8 +43,8 @@ router.get('/users/:username', (req, res) => {
         ExpressionAttributeValues: {
             ":user": req.params.username
         },
-        //Determine which fields will be returned (ideas and createdAt).
-        ProjectionExpression: "#ia, #ca",
+        //Determine which fields will be returned.
+        ProjectionExpression: "#ia, #ca, #un",
         //Ensure descending order.
         ScanIndexForward: false
     };

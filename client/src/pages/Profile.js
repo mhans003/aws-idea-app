@@ -16,11 +16,7 @@ const Profile = props => {
     //Acess the username from the URL parameter.
     const { username: userParam } = useParams();
     const [isLoaded, setIsLoaded] = useState(false);
-    const [ideas, setIdeas] = useState([{
-        username: userParam,
-        createdAt: '', 
-        idea: ''
-    }]);
+    const [ideas, setIdeas] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -29,12 +25,14 @@ const Profile = props => {
                 const data = await res.json();
                 console.log(data);
                 setIdeas([...data]);
+                //Confirm that we are no longer loading the page.
                 setIsLoaded(true);
             } catch (error) {
                 console.log(error);
             }
         };
         fetchData();
+    //When the userParam changes, we know we want to get a different unique set of ideas (different user).
     }, [userParam]);
 
     return (
@@ -50,7 +48,7 @@ const Profile = props => {
                 {!isLoaded ? (
                         <div>Loading...</div>
                     ) : (
-                        <IdeaList ideas={ideas} title={`${userParam}'s ideas...`} />
+                        <IdeaList ideas={ideas} title={`${userParam}'s ideas...`}/>
                     )}
                 </div>
             </div>

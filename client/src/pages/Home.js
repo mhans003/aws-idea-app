@@ -16,6 +16,7 @@ const Home = () => {
                 //Sort the array by createdAt property ordered by descending values.
                 const data = jsonData.sort((a, b) => (a.createdAt < b.createdAt) ? 1 : -1);
                 setIdeas([...data]);
+                //Confirm that we are no longer loading the page.
                 setIsLoaded(true);
             } catch (error) {
                 console.log(error);
