@@ -3,7 +3,7 @@ const fs = require('fs');
 
 AWS.config.update({
     region: "us-east-2",
-    endpoint: "http://localhost:8000"
+    //endpoint: "http://localhost:8000"
 });
 
 //Use DocumentClient class to enable use of JS objects as args and return native JS types.
