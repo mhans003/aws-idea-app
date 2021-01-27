@@ -5,6 +5,7 @@ const PORT = process.env.PORT || 3001;
 
 //Include routes.
 const userRoutes = require('./routes/user-routes');
+const imageRoutes = require('./routes/image-upload');
 
 //Handle parsing middleware.
 app.use(express.json());
@@ -17,6 +18,7 @@ if (process.env.NODE_ENV === 'production') {
 
 //Set up API routes.
 app.use('/api/', userRoutes);
+app.use('/api/', imageRoutes);
 
 // Start the API server
 app.listen(PORT, () =>
