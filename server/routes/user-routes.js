@@ -38,13 +38,14 @@ router.get('/users/:username', (req, res) => {
         ExpressionAttributeNames: {
             "#un": "username",
             "#ca": "createdAt",
-            "#ia": "idea"
+            "#ia": "idea",
+            "#img": "image"
         },
         ExpressionAttributeValues: {
             ":user": req.params.username
         },
         //Determine which fields will be returned.
-        ProjectionExpression: "#ia, #ca, #un",
+        ProjectionExpression: "#ia, #ca, #un, #img",
         //Ensure descending order.
         ScanIndexForward: false
     };
@@ -68,7 +69,8 @@ router.post('/users', (req, res) => {
         Item: {
             "username": req.body.username,
             "createdAt": Date.now(),
-            "idea": req.body.idea
+            "idea": req.body.idea,
+            "image": req.body.image
         }
     };
     //Perform operation to insert record.
