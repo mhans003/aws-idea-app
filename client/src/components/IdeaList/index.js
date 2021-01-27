@@ -27,12 +27,12 @@ const IdeaList = ({ ideas, title }) => {
                         {idea.idea}
                     </p>
                     {idea.image &&
-                        <p className="px-2">
+                        <div className="px-2">
                             <img
-                                className="mt-3 ml-4 idea-image"
+                                className="mt-3 idea-img"
                                 src={idea.image} alt="Image for Idea"
                             />
-                        </p>
+                        </div>
                     }
                 </div>
             ))}
