@@ -26,6 +26,14 @@ const IdeaList = ({ ideas, title }) => {
                     <p className="px-2">
                         {idea.idea}
                     </p>
+                    {idea.image &&
+                        <p className="px-2">
+                            <img
+                                className="mt-3 ml-4 idea-image"
+                                src={idea.image} alt="Image for Idea"
+                            />
+                        </p>
+                    }
                 </div>
             ))}
         </div>
