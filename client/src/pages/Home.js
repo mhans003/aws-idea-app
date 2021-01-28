@@ -35,7 +35,7 @@ const Home = () => {
                     {!isLoaded ? (
                         <div>Loading...</div>
                     ) : (
-                        <IdeaList ideas={ideas} title="Too many ideas? Dump 'em off..." />
+                        <IdeaList ideas={ideas} title="THE DUMP"/>
                     )}
                 </div>
             </div>

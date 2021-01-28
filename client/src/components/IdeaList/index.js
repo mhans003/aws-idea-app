@@ -10,7 +10,7 @@ const IdeaList = ({ ideas, title }) => {
     //Otherwise, render the list of ideas posted.
     return (
         <div>
-            <h3>{title}</h3>
+            <h3>{title} <i className='fas fa-dumpster'></i></h3>
             {ideas &&
             ideas.map((idea) => (
                 <div key={idea.createdAt} className="card mb-3">

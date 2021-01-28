@@ -10,7 +10,7 @@ const Header = () => {
                     style={{ fontWeight: 700 }}
                     className="text-light"
                 >
-                    <h1>idea dump</h1>
+                    <h1 class="brand">idea<i className="fas fa-lightbulb-on"></i>dump<i className="fas fa-trash"></i></h1>
                 </Link>{' '}
             </div>
         </header>

@@ -1,11 +1,25 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 const IdeaForm = () => {
     //Set up state for an idea and the username of the poster.
     const [formState, setFormState] = useState({ username: '', idea: '' });
     const [characterCount, setCharacterCount] = useState(0);
+    const [chosenPhrase, setChosenPhrase] = useState("");
     const fileInput = useRef(null);
 
+    //Get random phrase for input field.
+    let randomPhrases = [
+        "Here's a new one...",
+        "Hey, I got an idea...",
+        "Just gonna dump this idea here...",
+        "How's this for an idea...",
+        "I'm gonna dump my idea right here...",
+    ];
+
+    useEffect(() => {
+        setChosenPhrase(randomPhrases[Math.floor(Math.random() * randomPhrases.length)]);
+    }, [])
+    
     //Update state based on form input changes.
     const handleChange = event => {
         if (event.target.value.length <= 280) {
@@ -71,7 +85,7 @@ const IdeaForm = () => {
     return (
         <div>
             <p className={`m-0 ${characterCount === 280 ? 'text-error' : ''}`}>
-                Character Count: {characterCount}/280
+                Dump Space Left: {characterCount}/280
                 {/* {error && <span className="ml-2">Something went wrong...</span>} */}
             </p>
             <form
@@ -86,7 +100,7 @@ const IdeaForm = () => {
                     onChange={handleChange}
                 ></input>
                 <textarea
-                    placeholder="Here's a new idea..."
+                    placeholder={chosenPhrase}
                     name="idea"
                     value={formState.idea}
                     className="form-input col-12 col-md-9"
