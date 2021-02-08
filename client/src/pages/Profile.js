@@ -38,7 +38,7 @@ const Profile = props => {
     return (
         <div>
             <div className="flex-row justify-space-between mb-3">
-                <div className="col-12 mb-3 col-lg-8">
+                <div className="col-12 mb-3">
                 {!isLoaded ? (
                         <div>Loading...</div>
                     ) : (
