@@ -31,11 +31,11 @@ const Home = () => {
                 <div className="col-12 mb-3">
                     <IdeaForm />
                 </div>
-                <div className={`col-12 mb-3 `}>
+                <div className={`col-12 my-5 `}>
                     {!isLoaded ? (
                         <div>Loading...</div>
                     ) : (
-                        <IdeaList ideas={ideas} title="THE DUMP"/>
+                        <IdeaList ideas={ideas}/>
                     )}
                 </div>
             </div>

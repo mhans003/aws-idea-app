@@ -22,7 +22,7 @@ const IdeaForm = () => {
     
     //Update state based on form input changes.
     const handleChange = event => {
-        if (event.target.value.length <= 280) {
+        if (event.target.value.length <= 500) {
             setFormState({ ...formState, [event.target.name]: event.target.value });
             setCharacterCount(event.target.value.length);
         }
@@ -84,8 +84,8 @@ const IdeaForm = () => {
 
     return (
         <div>
-            <p className={`m-0 ${characterCount === 280 ? 'text-error' : ''}`}>
-                Dump Space Left: {characterCount}/280
+            <p className={`m-0 ${characterCount === 500 ? 'text-error' : ''}`}>
+                Dump Space Left: {characterCount}/500
                 {/* {error && <span className="ml-2">Something went wrong...</span>} */}
             </p>
             <form
@@ -96,33 +96,37 @@ const IdeaForm = () => {
                     placeholder="Name"
                     name="username"
                     value={formState.username}
-                    className="form-input col-12 col-md-9"
+                    className="form-input col-12"
                     onChange={handleChange}
                 ></input>
                 <textarea
                     placeholder={chosenPhrase}
                     name="idea"
                     value={formState.idea}
-                    className="form-input col-12 col-md-9"
+                    className="form-input col-12"
                     onChange={handleChange}
+                    rows="4"
                 ></textarea>
-                <label className="form-input col-12  p-1">
+                <label className="form-input col-12 p-1">
                     Include Image: 
                     <input
                         type="file"
                         ref={fileInput}
-                        className="form-input p-2"
+                        className="form-input p-2 my-3"
                     />
-                    <button 
-                        className="btn" 
-                        onClick={handleImageUpload} 
-                        type="submit"
-                    >
-                        Upload
-                    </button>
+                    <div className="image-btn-wrapper">
+                        <button 
+                            className="btn upload-img-btn" 
+                            onClick={handleImageUpload} 
+                            type="submit"
+                        >
+                            Upload Image <i className="fad fa-camera-retro"></i>
+                        </button>
+                    </div>
+                    
                 </label>
-                <button className="btn col-12 col-md-3" type="submit">
-                    Submit
+                <button className="btn col-12 submit-btn" type="submit">
+                    Submit <i className="fas fa-paper-plane"></i>
                 </button>
             </form>
         </div>

@@ -10,20 +10,32 @@ const IdeaList = ({ ideas, title }) => {
     //Otherwise, render the list of ideas posted.
     return (
         <div>
-            <h3>{title} <i className='fas fa-dumpster'></i></h3>
+            {title &&
+                <h3 className="py-2">{title}</h3>}
             {ideas &&
             ideas.map((idea) => (
                 <div key={idea.createdAt} className="card mb-3">
-                    <p className="card-header">
+                    <div className="card-header">
                         <Link
                             to={`/profile/${idea.username}`}
                             style={{ fontWeight: 700 }}
                             className="text-light"
                         >
-                            {idea.username}'s idea on {new Date(parseInt(idea.createdAt)).toString()}
+                            <div className="idea-heading flex-row justify-space-between">
+                                <span className="idea-heading-name">{idea.username + " "}</span>
+                                <span className="idea-heading-date">         
+                                    <i>
+                                        {
+                                            new Date(
+                                                parseInt(idea.createdAt)
+                                            ).toLocaleString().split(',')[0]
+                                        }
+                                    </i>
+                                </span>
+                            </div>
                         </Link>{' '}
-                    </p>
-                    <p className="px-2">
+                    </div>
+                    <p className="px-2 idea-text">
                         {idea.idea}
                     </p>
                     {idea.image &&
